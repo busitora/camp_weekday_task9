@@ -1,2 +1,17 @@
-<h1>Tasks#show</h1>
-<p>Find me in app/views/tasks/show.html.erb</p>
+<p class="blue">
+  <%= flash[:notice] if true %>
+</p>  
+
+<div class = "main">
+  <h2>タイトル:<%= @task.title %><h2>
+  <h2>メモ:<%= @task.memo %><h2>
+  <h2>状態:<%= @task.status %><h2>
+  <h2>登録日:<%= @task.created_at.strftime("%Y年%m月%d日") %><h2>
+</div>
+
+<div class = "link">
+  <%= link_to "一覧", tasks_path %>
+  <%= link_to "編集", edit_task_path(@task) %>
+  <%= link_to "削除", task_path(@task), method: :delete, data: {confirm: '削除してよろしいですか？'} %>
+</div>
+
