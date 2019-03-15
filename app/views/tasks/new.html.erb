@@ -1,0 +1,26 @@
+<h1>タスク登録フォーム</h1>
+<%= form_with model: @task, local: true do |form| %>
+  <% if @task.errors.any? %>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li class="red"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div>
+    <P><%=form.label "タスク名:" %></P>
+    <P><%=form.text_field :title %></P>
+  </div>
+  <div>
+    <P><%=form.label "タスクメモ:" %></P>
+    <P><%=form.text_area :memo %></P>
+  </div>
+  <div>
+    <P><%=form.label "状態:" %></P>
+    <P><%=form.select :status, [["下書き", "draft"], ["公開", "published"], ["アーカイブ", "archieved"]] %></P>
+  </div>
+  <p><%= form.submit "登録" %></p>
+<% end %>
+
+<%= link_to "一覧",tasks_path %>
+
