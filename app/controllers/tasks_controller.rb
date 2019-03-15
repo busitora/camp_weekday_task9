@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   
   def index
     # @tasks = Task.all
-    @tasks = Task.order(created_at: :desc).limit(5)
+    @tasks = Task.where(is_display: true).limit(5)
   end
 
   def show

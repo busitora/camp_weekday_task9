@@ -2,7 +2,6 @@
 
 <div>
   <% @tasks.each do |task| %>
-    <% if task.is_display == true %>
       <ul>
         <% if task.status == "draft" %>
           <li><%= link_to task.title, task_path(task), :style=>"color:#FF0000;" %> <%= task.created_at.strftime("%Y年%m月%d日") %></li>
@@ -12,8 +11,7 @@
           <li><%= link_to task.title, task_path(task), :style=>"color:#008000;" %> <%= task.created_at.strftime("%Y年%m月%d日") %></li>
         <% end %>
       </ul>
-    <% end %>
   <% end %>
 </div>
 <%= link_to "出品する", new_task_path %>
-<%= link_to "非表示一覧" , "/tasks/hide" %>
+<%= link_to "非表示一覧" , tasks_hide_path %>
